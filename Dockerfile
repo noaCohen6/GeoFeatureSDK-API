@@ -4,17 +4,11 @@ FROM gradle:8.5-jdk17 AS build
 # Set working directory
 WORKDIR /app
 
-# Copy Gradle files
-COPY build.gradle settings.gradle gradlew ./
-COPY gradle ./gradle
-
-# Download dependencies (cached layer)
-RUN gradle dependencies --no-daemon || return 0
-
-# Copy source code
+# Copy only necessary files
+COPY build.gradle settings.gradle ./
 COPY src ./src
 
-# Build the application (skip tests for faster build)
+# Build the application (Gradle will download dependencies)
 RUN gradle bootJar --no-daemon -x test
 
 # ===== Stage 2: Run the application =====
