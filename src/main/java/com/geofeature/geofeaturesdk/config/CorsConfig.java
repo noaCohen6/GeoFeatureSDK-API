@@ -15,16 +15,8 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allow credentials (cookies, authorization headers, etc.)
-        config.setAllowCredentials(true);
-
-        // Allowed origins (frontend URLs)
-        config.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",      // React dev server
-                "http://localhost:5173",      // Vite dev server
-                "http://localhost:4200",      // Angular dev server
-                "https://your-admin-portal.vercel.app"  // Production (תעדכני בהמשך)
-        ));
+        // Allow all origins (for Swagger and development)
+        config.addAllowedOriginPattern("*");
 
         // Allowed HTTP methods
         config.setAllowedMethods(Arrays.asList(
