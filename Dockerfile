@@ -1,5 +1,5 @@
 # ===== Stage 1: Build the application =====
-FROM gradle:8.14-jdk17 AS build
+FROM gradle:8.14-jdk21 AS build
 
 # Set working directory
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY src ./src
 RUN gradle bootJar --no-daemon -x test
 
 # ===== Stage 2: Run the application =====
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 
 # Set working directory
 WORKDIR /app
