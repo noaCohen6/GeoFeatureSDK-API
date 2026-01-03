@@ -35,3 +35,19 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### ⭐ Admin Portal (React) - חשוב מאוד! ###
+admin-portal/node_modules/
+admin-portal/dist/
+admin-portal/.env
+
+### Environment Variables ###
+.env
+*.env
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Logs ###
+*.log
